@@ -1,24 +1,25 @@
 # Ateen_Retflix
 
 ## Table of Contents
-* [Installation instructions](#Installation instructions)
-* [PATH information](#PATH information)
-* [Version](#Version check)
-* [DB](#DB)
+* [Installation instructions](#installation)
+* [Grant permission](#permission)
+* [PATH information](#path)
+* [Version](#version)
+* [DB](#db)
 
-## Installation instructions
+## <a name="installation"></a>Installation instructions
 ```sh
 cd /PATH/TO/set_env.sh
 sudo chmod +rwx set_env.sh
 # this may take a while
 sudo ./set_env.sh 
 ```
-# Grant permission
+# <a name="permission"></a>Grant permission
 ```sh
 sudo chmod +rwx (BLANK)
 ```
 
-## PATH information
+## <a name="path"></a>PATH information
 > html: /usr/share/nginx/html   
 > css: /usr/share/nginx/css   
 > default.conf: /etc/nginx/conf.d       
@@ -28,7 +29,7 @@ sudo chmod +rwx (BLANK)
 > register: /usr/share/nginx/html   
 > signin: /usr/share/nginx/html   
 
-## Version check
+## <a name="version"></a>Version check
 ```sh
 # This must show no errors
 nginx -v
@@ -36,7 +37,7 @@ php -v
 mysql -v
 ```
 
-## DB
+## <a name="db"></a>DB
 > localhost   
 > user: root   
 > pw: ateen
@@ -49,7 +50,7 @@ use reflix;
 source ./retflix.sql
 ```
 
-## Start server
+## <a name="server"></a>Start server
 ```sh
 cd /usr/share/nginx/
 sudo service nginx start
