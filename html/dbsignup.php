@@ -37,7 +37,7 @@
 	//Get max-user_id number to give user identification number.
 	$sql1 = "SELECT MAX(user_id) as max from user_web;";
 	$ret1 = mysqli_query($conn, $sql1);
-	if(!ret1){
+	if(!$ret1){
 		echo "failed ".mysqli_error($conn);
 		mysqli_close($conn);
 		exit;
@@ -90,7 +90,7 @@
 
 	$sql2 = "INSERT INTO user_web VALUES('$SignupName', '$hashedPW[0]', ".$user_id.");";
 	$ret2 = mysqli_query($conn, $sql2);
-	if(!ret2){
+	if(!$ret2){
 		echo "failed ".mysqli_error($conn);
 		mysqli_close($conn);
 		exit;
