@@ -1,0 +1,134 @@
+body {
+            background: black;
+            color: white;
+}
+
+        @keyframes netflix_style {
+            0% {
+                text-shadow: makelongshadow(100,1);
+                color:#f3f3f3;
+                transform: scale(1.5, 1.5);
+            }
+            10% {
+                text-shadow: makelongshadow(100,1.5);
+                color:#f3f3f3;
+                transform: scale(1.5, 1.5);
+            }
+            15% {
+                color:#f3f3f3;
+            }
+            20% {    
+                color:#e90418;
+                text-shadow: none;
+                transform: scale(1.1, 1.1);
+            }
+            75% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 0;    
+                color:#e90418;
+                transform: scale(0.85, 0.9);
+            }
+            
+            100% {
+                opacity: 0;
+            }
+        }
+        .logo {
+            position:fixed; 
+            /* top:0;  
+            left:0; 
+            vertical-align: top;*/
+            /* top:0; */
+            text-align: left;
+            
+            font-family: BebasNeue;
+            text-align: center;
+            font-size: 12vmin;
+            font-weight: 700;
+            animation: netflix_style 3.5s infinite;
+            outline: none;
+            white-space: nowrap;
+        }
+
+        
+		.star {
+			background:
+				url('http://miuu227.godohosting.com/images/icon/ico_review.png')
+				no-repeat right 0;
+			background-size: auto 100%;
+			width: 30px;
+			height: 30px;
+			display: inline-block;
+			text-indent: -9999px;
+			cursor: pointer;
+		}
+		.star.on {
+			background-position: 0 0;
+		}
+
+        #reviews-container {
+            position: absolute; 
+            top: 50%; 
+            /* top: 30px; */
+            /* transform: translateY(-50%);  */
+            width: 100%;
+            text-align: center;
+        }
+
+        #review-field {
+            margin: 15px;
+            width: 50%;
+            height: 100px;
+        }
+
+        #post-button {
+           
+            /* padding: 13px; */
+            /* width: 80px; */
+            /* height: 90px; */
+            /* border : 1.5px solid white; */
+            /* border-radius: 50%; */
+            padding: 8px;
+            color: black;
+            text-align: center;
+            font-size: 20px;
+            letter-spacing: 3px;
+            /* margin-top: 50px; */
+            background: white;
+            border: medium groove gray;
+            text-decoration: none;
+			
+        }
+	#read-button {
+
+            padding: 8px;
+            color: black;
+            text-align: center;
+            font-size: 20px;
+            letter-spacing: 3px;
+            /* margin-top: 50px; */
+            background: white;
+            border: medium groove gray;
+            text-decoration: none;
+        }
+a {
+    top: 30px;
+    padding: 8px;
+    /* left: 90%;  */
+    right: 30px;
+    position: absolute;
+    text-decoration: none;
+    /* border: 0 solid transparent; */
+    /* box-sizing: border-box; */
+    /* border: 1px white; */
+    /* content: ''; */
+    /* pointer-events: none; */
+    /* position: absolute; */
+    /* background: rgb(255, 255, 255, 0.85); */
+
+    background: transparent;
+    color: white;
+    font-size: 15px;
+}
