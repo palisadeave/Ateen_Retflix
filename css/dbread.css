@@ -1,0 +1,88 @@
+body {
+            background: black;
+            color: white;
+        }
+
+        @keyframes netflix_style {
+            0% {
+                text-shadow: makelongshadow(100,1);
+                color:#f3f3f3;
+                transform: scale(1.5, 1.5);
+            }
+            10% {
+                text-shadow: makelongshadow(100,1.5);
+                color:#f3f3f3;
+                transform: scale(1.5, 1.5);
+            }
+            15% {
+                color:#f3f3f3;
+            }
+            20% {    
+                color:#e90418;
+                text-shadow: none;
+                transform: scale(1.1, 1.1);
+            }
+            75% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 0;    
+                color:#e90418;
+                transform: scale(0.85, 0.9);
+            }
+            
+            100% {
+                opacity: 0;
+            }
+        }
+        .logo {
+            position:fixed; 
+            /* top:0;  
+            left:0; 
+            vertical-align: top;*/
+            /* top:0; */
+            text-align: left;
+            
+            font-family: BebasNeue;
+            text-align: center;
+            font-size: 12vmin;
+            font-weight: 700;
+            animation: netflix_style 3.5s infinite;
+            outline: none;
+            white-space: nowrap;
+        }
+	#reviews_container {
+		position: absolute; 
+            /* top: 50%;  */
+            top: 150px;
+            /* transform: translateY(-50%);  */
+            width: 100%;
+            text-align: center;
+
+	}
+
+    table,th, td{
+        border: 1px solid white;
+        width: 100%;
+        table-layout: fixed;
+
+    }
+a {
+    top: 30px;
+    padding: 8px;
+    /* left: 90%;  */
+    right: 30px;
+    position: absolute;
+    text-decoration: none;
+    /* border: 0 solid transparent; */
+    /* box-sizing: border-box; */
+    /* border: 1px white; */
+    /* content: ''; */
+    /* pointer-events: none; */
+    /* position: absolute; */
+    /* background: rgb(255, 255, 255, 0.85); */
+
+    background: transparent;
+    color: white;
+    font-size: 15px;
+}
