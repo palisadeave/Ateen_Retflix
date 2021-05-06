@@ -1,10 +1,10 @@
 # Ateen_Retflix
 
 ## Table of Contents
-* [Installation instructions] (#Installation instructions)
-* [PATH information] (#PATH information)
-* [Version] (#Version check)
-* [DB] (#DB)
+* [Installation instructions](#Installation instructions)
+* [PATH information](#PATH information)
+* [Version](#Version check)
+* [DB](#DB)
 
 ## Installation instructions
 ```sh
