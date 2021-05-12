@@ -3,13 +3,13 @@ CFLAGS = -W -Wall -O2 -fomit-frame-pointer -funroll-loops -z execstack -fno-stac
 
 all: bcrypt.a
 
-test: bcrypt.o test.c
-	$(CC) $(CFLAGS) -c test.c
-	$(CC) -o test bcrypt.o test.o -lbsd #`pkg-config --libs libbsd`
-	./test "ateen"
+register: bcrypt.o register.c
+	$(CC) $(CFLAGS) -c register.c
+	$(CC) -o register bcrypt.o register.o -lbsd #`pkg-config --libs libbsd`
+	./register "ateen"
 
 bcrypt.a: bcrypt.o
 	ar r bcrypt.a bcrypt.o
 
 clean:
-	rm -f *.o test bcrypt.a
+	rm -f *.o register bcrypt.a
