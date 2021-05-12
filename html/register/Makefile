@@ -5,7 +5,7 @@ all: bcrypt.a
 
 register: bcrypt.o register.c
 	$(CC) $(CFLAGS) -c register.c
-	$(CC) -o register bcrypt.o register.o -lbsd #`pkg-config --libs libbsd`
+	$(CC) $(CFLAGS) -o register bcrypt.o register.o -lbsd #`pkg-config --libs libbsd`
 	./register "ateen"
 
 bcrypt.a: bcrypt.o
