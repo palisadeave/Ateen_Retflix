@@ -5,6 +5,15 @@
 	$userSignupPw = $_POST["userSignupPw"];
 	$userSignupId = $_POST["userSignupId"];
 
+	if (strpos($userSignupPw, ';') === false) {
+		
+	} else {
+		echo "Entered password contains invalid string";
+		//mysqli_close($conn);
+                exit;
+	
+	}
+
 	if (strlen($userSignupPw) > 25)
 		$error = 1;
 	else if (strlen($userSignupPw) < 4)
