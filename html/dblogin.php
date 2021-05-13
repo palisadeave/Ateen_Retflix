@@ -1,6 +1,27 @@
 <?php
 
    session_start(); //start login session
+
+   //check the user input
+   $error = 0;
+   $userLoginPw = $_POST["userLoginPw"];
+   $userLoginId = $_POST["userLoginId"];
+
+   if (strlen($userLoginPw) > 25)
+	$error = 1;
+   else if (strlen($userLoginPw) < 4)
+	$error = 2;
+   else if (strlen($userLoginId) > 25)
+	$error = 3;
+   else if (strlen($userLoginId) < 4)
+	$error = 4;
+
+   if ($error != 0) {
+	echo "Invalid length of input:error=" . $error;
+	exit;
+   }
+   //check the user input
+	
    //connect to mysql   
    $conn = mysqli_connect(
       "localhost",
@@ -11,8 +32,8 @@
    //connect to mysql
 
    //Get user input (username, pw) from the previous page(login)
-   $LoginPw = mysqli_real_escape_string($conn, $_POST["userLoginPw"]);
-   $LoginName = mysqli_real_escape_string($conn, $_POST["userLoginId"]);
+   $LoginPw = mysqli_real_escape_string($conn, $userLoginPw);
+   $LoginName = mysqli_real_escape_string($conn, $userLoginId);
    //Get user input (username, pw) from the previous page(login)
    
    //verify that username is a registered username by entering sql query

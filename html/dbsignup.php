@@ -1,4 +1,25 @@
 <?php
+
+	//check the user input
+	$error = 0;
+	$userSignupPw = $_POST["userSignupPw"];
+	$userSignupId = $_POST["userSignupId"];
+
+	if (strlen($userSignupPw) > 25)
+		$error = 1;
+	else if (strlen($userSignupPw) < 4)
+		$error = 2;
+	else if (strlen($userSignupId) > 25)
+		$error = 3;
+	else if (strlen($userSignupId) < 4)
+		$error = 4;
+
+	if ($error != 0) {
+		echo "Invalid length of input:error=" . $error;
+		exit;
+	}
+	//check the user input
+
 	//connect to mysql
 	$conn = mysqli_connect(
 		"localhost",
@@ -7,11 +28,9 @@
 		"retflix"
 	) or die ("DB FAILED");
 	
-	//Get signupName/pw from the previous page(join.html).
-	$SignupPw = $_POST["userSignupPw"];
-	$SignupName = $_POST["userSignupId"];
+	$SignupPw = $userSignupPw;
+	$SignupName = $userSignupId;
 
-	
 		
 	// search the name user entered from DB to know it's duplicated or not.
 	$sql = "SELECT username from user_web where username='$SignupName';";
@@ -37,7 +56,7 @@
 	//Get max-user_id number to give user identification number.
 	$sql1 = "SELECT MAX(user_id) as max from user_web;";
 	$ret1 = mysqli_query($conn, $sql1);
-	if(!$ret1){
+	if(!ret1){
 		echo "failed ".mysqli_error($conn);
 		mysqli_close($conn);
 		exit;
@@ -90,7 +109,7 @@
 
 	$sql2 = "INSERT INTO user_web VALUES('$SignupName', '$hashedPW[0]', ".$user_id.");";
 	$ret2 = mysqli_query($conn, $sql2);
-	if(!$ret2){
+	if(!ret2){
 		echo "failed ".mysqli_error($conn);
 		mysqli_close($conn);
 		exit;
