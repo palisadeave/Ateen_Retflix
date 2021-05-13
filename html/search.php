@@ -3,7 +3,19 @@
 
     //get user input from searchWin.php and make URL for restAPI
 	$searchString = $_POST["movie_php"];
+
+	if ((strpos($searchString, ';') === false) && (strpos($searchString, '`') === false)) {
+	} else {
+                echo '<script>alert("Entered search keyword contains invalid string")</script>';
+		echo ("<script>location.href='searchWin.php';</script>");
+                exit;
+		
+        }
+
+
+
 	$query = shell_exec("./api_req \"$searchString\"");
+
 
 	echo "query is \n";
 	print_r($query);
