@@ -41,8 +41,8 @@
 					) or die ("DB FAILED");
 					
 					//Get title/netflixid from the previous page(review.php)				
-					$title = $_POST['title_php_read'];	
-					$netflixid = $_POST['netid_php_read'];
+					$title = mysqli_real_escape_string($conn, $_POST["title_php_read"]);	
+					$netflixid = mysqli_real_escape_string($conn, $_POST["netid_php_read"]);
 					
 					echo "<font size = 8pt>".$title."<br></font>"; //Display the title of the movie
 					
