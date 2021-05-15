@@ -10,6 +10,7 @@
 	
 	//Load the variables from the previous page(review.php)
 	$star = $_POST["star_php"];
+	// prevent SQL injection
 	$review = mysqli_real_escape_string($conn, $_POST["review_php"]);
 	$title = mysqli_real_escape_string($conn, $_POST["title_php"]);
 	$username =  mysqli_real_escape_string($conn, $_POST["userid_php"]);
