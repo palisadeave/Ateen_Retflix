@@ -51,11 +51,10 @@
 
         //this function create and show the list of movie based on the parsed data
         function showResults() {
-            //console.log("This is showResults()");
-            count = searchResult.total-1;
-            while (count >= 0) {
-                //console.log("This is while(). count = " + count);
-                
+	    count = searchResult.results.length;
+            count--;
+		
+            while (count >= 0) {                
                 var resultDiv = document.createElement("div");
                 var textSpan = document.createElement("span");
                 resultDiv.setAttribute("class", "result");
