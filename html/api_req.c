@@ -19,10 +19,8 @@ int main(int argc, char ** argv)
 	int query_len = (strlen(pre_query) + MAX_QUERY_LEN);
 	char *query = (char *)malloc(query_len * sizeof(char));
 	int idx;
-	
-	sprintf(searchString, argv[1]);
-	strcpy(query, pre_query);
-	
+	snprintf(searchString, MAX_SEARCH_LEN, argv[1]);
+	strncpy(query, pre_query, query_len);
 	//this for statement replace the special characters in searchString to ASCII code then assigned the changed string to query
 	//i is index of searchString where the comparing start
 	for( int i = 0; i < strlen(searchString); i = idx + 1)
@@ -31,7 +29,7 @@ int main(int argc, char ** argv)
 
 		strncat(query, &searchString[i], (idx - i));
 		if ( idx < strlen(searchString)) {
-			sprintf( query, "%s%%%x", query, searchString[idx]);
+			snprintf( query, strlen(query)+2, "%s%%%x", query, searchString[idx]);
 		}
 	}
 	printf("%s", query);
