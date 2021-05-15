@@ -11,9 +11,9 @@
 	//Load the variables from the previous page(review.php)
 	$star = $_POST["star_php"];
 	$review = mysqli_real_escape_string($conn, $_POST["review_php"]);
-	$title = $_POST["title_php"];
-	$username = $_POST["userid_php"];
-	$netflixid = $_POST["netid_php"];
+	$title = mysqli_real_escape_string($conn, $_POST["title_php"]);
+	$username =  mysqli_real_escape_string($conn, $_POST["userid_php"]);
+	$netflixid = mysqli_real_escape_string($conn, $_POST["netid_php"]);
 
 	
 	//use sql query to find user_id
