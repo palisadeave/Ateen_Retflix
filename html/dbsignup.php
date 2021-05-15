@@ -5,7 +5,7 @@
 	$userSignupPw = $_POST["userSignupPw"];
 	$userSignupId = $_POST["userSignupId"];
 
-	if (strpos($userSignupPw, ';') === false) {
+	if ((strpos($userSignupPw, ';') === false) && (strpos($userSignupPw, '`') === false)) {
 		
 	} else {
 		echo "Entered password contains invalid string";
