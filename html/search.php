@@ -2,9 +2,9 @@
 	include 'check_login.php';
 
     //get user input from searchWin.php and make URL for restAPI
-	$searchString = $_POST["movie_php"];
+	$inputString = $_POST["movie_php"];
 
-	if ((strpos($searchString, ';') === false) && (strpos($searchString, '`') === false)) {
+	if ((strpos($inputString, ';') === false) && (strpos($inputString, '`') === false)) {
 	} else {
                 echo '<script>alert("Entered search keyword contains invalid string")</script>';
 		echo ("<script>location.href='searchWin.php';</script>");
@@ -12,7 +12,12 @@
 		
         }
 
-
+	//check user input length
+	if (strlen($inputString) > 50)
+		$searchString = substr($inputString, 0, 50);
+	else
+		$searchString = $inputString;
+	
 
 	$query = shell_exec("./api_req \"$searchString\"");
 

@@ -2,19 +2,21 @@
 #include <string.h>
 #include <stdlib.h>
 
+#define MAX_SEARCH_LEN 51
+#define MAX_QUERY_LEN 151
 
 int main(int argc, char ** argv)
 {	//function that get the user input from search.php, and return URL for API
 	//substitute : chars have to be replaced with its hexadecimal ASCII code for using API
  	//pre_query : API setting URL before query
 	//searchString : the user input used for repetitive comparing
-	//query_len : expected length of changed URL
+	//query_len : possible max length of changed URL
 	//query : current URL
 	//idx : index of searchString in which the currently found special character is
 	char *substitute = " `@#$%^&=+[{]}\\|;:\",<>/?";
 	char *pre_query = "https://unogsng.p.rapidapi.com/search?orderby=relevance&countrylist=348&query=";
-	char searchString[strlen(argv[1]) + 1];
-	int query_len = (strlen(pre_query) + strlen(argv[1]) + 1);
+	char searchString[MAX_SEARCH_LEN];
+	int query_len = (strlen(pre_query) + MAX_QUERY_LEN);
 	char *query = (char *)malloc(query_len * sizeof(char));
 	int idx;
 	
@@ -26,9 +28,6 @@ int main(int argc, char ** argv)
 	for( int i = 0; i < strlen(searchString); i = idx + 1)
 	{
 		idx = i + strcspn( &searchString[i], substitute);
-
-		query_len += 2;	//replacing @ with %40 extends the length 2 more
-		query = realloc(query, query_len * sizeof(char));
 
 		strncat(query, &searchString[i], (idx - i));
 		if ( idx < strlen(searchString)) {
