@@ -7,6 +7,17 @@
    $userLoginPw = $_POST["userLoginPw"];
    $userLoginId = $_POST["userLoginId"];
 
+	// checks whether inputs are valid
+   	if ((strpos($userLoginPw, ';') === false) && (strpos($userLoginPw, '`') === false) && (strpos($userLoginId, ';') === false) && (strpos($userLoginId, '`') === false) ) {
+        } else {
+		echo "Invalid input";
+                echo '<script>alert("Input contains invalid string")</script>';
+                echo ("<script>location.href='login.php';</script>");
+                exit;
+
+        }
+
+
    if (strlen($userLoginPw) > 25)
 	$error = 1;
    else if (strlen($userLoginPw) < 4)
@@ -79,8 +90,17 @@
    // give plain password from user input and one-way hashed password from DB as arguments and run signin. 
    // when command succeeds shell_exec() returns what is printed. when it fails null will be returned. However, null could also indicate that command was executed without failure but nothing was printed. 
    // arguments are plain password and hashed password
-   $returnValue = shell_exec('./signin/signin '.$LoginPw.' \''.$row["pw"].'\'');
-   
+
+	// escape invalid strings that might have not been filtered out yet 
+	$argInputPw = escapeshellarg($LoginPw);
+	$escaped_command = escapeshellcmd('./signin/signin '.$argInputPw);
+	if (strlen($escaped_command) != strlen('./signin/signin '.$argInputPw)) {
+		echo '<script>alert("Input contains invalid string")</script>';
+                echo ("<script>location.href='login.php';</script>");
+                exit;
+	
+	}
+	$returnValue = shell_exec($escaped_command.' \''.$row["pw"].'\'');
    // if 0 is returned from signin the password input matches the hashed value in DB. 
    if ($returnValue === '0') {
       // Login follows
