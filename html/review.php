@@ -38,7 +38,7 @@
 					<input type="hidden" id="netid_php" name="netid_php">
 					<input type="hidden" id="userid_php" name="userid_php" value="<?php echo $usrid; ?>">
 				</form>
-				<form name = "Form2" method = "Post" action="dbread.php">  =<!--A form to post datas to dbwrite.php when the Post button is clicked-->
+				<form name = "Form2" method = "Post" action="dbread.php"><!--A form to post datas to dbwrite.php when the Post button is clicked-->
 					<button id='read-button' style="cursor:pointer" type="submit" onclick="readclicked()">Read reviews</button>
 					<input type="hidden" id="title_php_read" name="title_php_read">
 					<input type="hidden" id="netid_php_read" name="netid_php_read">	
