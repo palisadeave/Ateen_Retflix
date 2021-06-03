@@ -38,7 +38,7 @@
         window.onload = function() {
             //console.log("This is search()");
             searchContainer.style.top = '55px';
-            fetch("./SEARCH")
+            fetch("./searchResult.json")
                     .then(response => response.json())
                     .then(json => {
                         //console.log("This is fetch(). and ");
