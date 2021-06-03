@@ -44,7 +44,7 @@
 					$title = mysqli_real_escape_string($conn, $_POST["title_php_read"]);	
 					$netflixid = mysqli_real_escape_string($conn, $_POST["netid_php_read"]);
 					
-					echo "<font size = 8pt>".$title."<br></font>"; //Display the title of the movie
+					echo "<font size = 8pt>".htmlspecialchars($title)."<br></font>"; //Display the title of the movie
 					
 					//get average rating of the movie from DB table(movie)
 					$sql = "select avg_rating from movie where id = ".$netflixid.";";
@@ -83,8 +83,8 @@
 						$username = $row2['uname'];
 						?>
 					<tr>
-						<td class="user"><?php echo $username?></td>
-						<td style="word-wrap:break-word" class="content"><?php echo $row['review']?> </td>
+						<td class="user"><?php echo htmlspecialchars($username)?></td>
+						<td style="word-wrap:break-word" class="content"><?php echo htmlspecialchars($row['review'])?> </td>
 						<td class = "stars">
 						<?php 
 							$i=0;
