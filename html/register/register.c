@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
-
+    
 int main(int argc, char** argv)
 {
     char salt[BCRYPT_HASHSIZE];
@@ -15,8 +15,9 @@ int main(int argc, char** argv)
     char inputPW[26];
     int returnValue;
 
-    strcpy(inputPW, argv[1]);
-	// generate salt 
+    strlcpy(inputPW, argv[1], 26);
+
+    // generate salt
     if (bcrypt_gensalt(12, salt) != 0) {
 	// if process failed while generating salt, 1 will be  printed and indicate failiure in gensalt
         returnValue = 1;
@@ -34,5 +35,3 @@ int main(int argc, char** argv)
     printf("%s", hashedPW);
     return 0;
 }
-
-
