@@ -37,8 +37,8 @@
 		"retflix"
 	) or die ("DB FAILED");
 	
-	$SignupPw = $userSignupPw;
-	$SignupName = $userSignupId;
+	$SignupPw = mysqli_real_escape_string($conn, $_POST["userSignupPw"]);
+	$SignupName = mysqli_real_escape_string($conn, $_POST["userSignupId"]);
 
 		
 	// search the name user entered from DB to know it's duplicated or not.
