@@ -18,18 +18,22 @@ int main(int argc, char ** argv)
 	char searchString[MAX_SEARCH_LEN];
 	int query_len = (strlen(pre_query) + MAX_QUERY_LEN);
 	char *query = (char *)malloc(query_len * sizeof(char));
+	char tmp_query[4];
 	int idx;
-	snprintf(searchString, MAX_SEARCH_LEN, argv[1]);
+
+	snprintf(searchString, MAX_SEARCH_LEN, "%s", argv[1]);
 	strncpy(query, pre_query, query_len);
+	
 	//this for statement replace the special characters in searchString to ASCII code then assigned the changed string to query
 	//i is index of searchString where the comparing start
 	for( int i = 0; i < strlen(searchString); i = idx + 1)
 	{
 		idx = i + strcspn( &searchString[i], substitute);
-
 		strncat(query, &searchString[i], (idx - i));
+		
 		if ( idx < strlen(searchString)) {
-			snprintf( query, strlen(query)+2, "%s%%%x", query, searchString[idx]);
+			snprintf( tmp_query, 4, "%%%x", searchString[idx]);
+			strncat(query, tmp_query, 3);
 		}
 	}
 	printf("%s", query);
