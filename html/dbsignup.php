@@ -78,9 +78,18 @@
 	// if return value of exec() is not properly stored in $hashedPW, $hashedPW will have this value.
 	$hashedPW = "This is initial value";
 	// execute register with user's plain password input($SignupPw) as an argument. 
-		// return status is stored in $returnStat.
-		// every line of output will be stored in array $hashedPW.
-	exec('./register/register '.$SignupPw, $hashedPW, $returnStat);
+	// return status is stored in $returnStat.
+	// every line of output will be stored in array $hashedPW.
+
+	$argSignupPw = preg_replace("/[^a-zA-Z0-9]/", "", $SignupPw);
+    $escaped_command = escapeshellcmd('./register/register '.$argSignupPw);
+    if (strlen($SignupPw) != strlen($argSignupPw)) {
+        echo '<script>alert("Input contains invalid string.\r\n'.$SignupPw.'\r\n'.$argSignupPw.'")</script>';
+        echo ("<script>location.href='login.php';</script>");
+        exit;
+    }
+
+    exec($escaped_command, $hashedPW, $returnStat);
 
 	// if $returnStat is '0'command above has been successfully executed. 
 	if ($returnStat === 0) {
